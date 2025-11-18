@@ -1,0 +1,28 @@
+<!--  <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  -->
+<suite name="UAsk Test Suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="utils.TestListener"/>
+    </listeners>
+    <test name="Desktop Tests">
+        <parameter name="device" value="desktop"/>
+        <classes>
+            <class name="test.ChatbotUITests">
+                <methods>
+                    <exclude name="tc02VerifyChatWidgetLoadsOnDevice"/>
+                </methods>
+            </class>
+            <class name="test.ResponseValidationTests"/>
+            <class name="test.SecurityTests"/>
+        </classes>
+    </test>
+    <test name="Mobile Tests">
+        <parameter name="device" value="iPhone12Pro"/>
+        <classes>
+            <class name="test.ChatbotUITests">
+                <methods>
+                    <include name="tc02VerifyChatWidgetLoadsOnDevice"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
